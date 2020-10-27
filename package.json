@@ -1,10 +1,13 @@
 {
   "name": "electron-quick-start",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A minimal Electron application for kids serialport ",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "nodemon --watch ./**/*  --ignore ./example/**/* --exec \"chcp 65001 && electron .\"",
+    "rebuild": "cnpm rebuild --runtime=electron --target=10.1.5 --disturl=https://atom.io/download/atom-shell --abi=82",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -14,9 +17,48 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
+  "author": "ShouShou",
   "license": "CC0-1.0",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "koa": "^2.13.0",
+    "koa-cors": "^0.0.16",
+    "serialport": "^9.0.0",
+    "socket.io": "^2.3.0"
+  },
   "devDependencies": {
-    "electron": "^10.1.5"
+    "electron": "^10.1.5",
+    "electron-boilerplate": "^1.1.1",
+    "electron-builder": "^22.9.1",
+    "electron-rebuild": "^2.3.2",
+    "nodemon": "^2.0.6"
+  },
+  "build": {
+    "appId": "kids-serial",
+    "productName": "创智源连接窗口（桌面端）",
+    "copyright": "Copyright © 2020 ${author}",
+    "files": [
+      "build/**/*",
+      "src/**/*",
+      "static/**/*",
+      "main.js",
+      "preload.js"
+    ],
+    "extends": null,
+    "win": {
+      "target": [
+        "msi",
+        "nsis"
+      ],
+      "icon": "static/favicon.ico",
+      "artifactName": "${productName}-Setup-${version}.${ext}",
+      "publisherName": "Shou"
+    },
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false,
+      "perMachine": false,
+      "include": "./installer.nsh"
+    }
   }
 }

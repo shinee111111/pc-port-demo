@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="style-src 'self' 'unsafe-inline'; default-src 'self'; script-src 'self' 'unsafe-inline';">
+  <meta http-equiv="X-Content-Security-Policy" content="style-src 'self' 'unsafe-inline';default-src 'self'; script-src 'self' 'unsafe-inline';">
+  <script src="./pageRender.js"></script>
+  <title>Hello World!</title>
+  <style>
+    h5 {
+      word-break: break-all;
+    }
+  </style>
+</head>
+
+<body>
+  <h5 id="log"></h5>
+
+  <!-- You can also require other files to run in this process -->
+</body>
+
+</html>
